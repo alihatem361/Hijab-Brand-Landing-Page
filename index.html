@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجابات حياء - أناقة وحشمة</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter & Cairo Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Use Cairo font for Arabic, fallback to Inter */
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        /* Simple transition for product cards */
+        .product-card {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Name -->
+            <a href="#" class="text-2xl font-bold text-gray-900">حجابات حياء</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="text-gray-600 hover:text-gray-900">الرئيسية</a>
+                <a href="#products" class="text-gray-600 hover:text-gray-900">المنتجات</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900">تواصل معنا</a>
+                <a href="#"
+                    class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all hover:scale-105 duration-200">تسوق
+                    الكل</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <a href="#home" class="block px-6 py-3 text-gray-600 hover:bg-gray-50">الرئيسية</a>
+            <a href="#products" class="block px-6 py-3 text-gray-600 hover:bg-gray-50">المنتجات</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-gray-50">تواصل معنا</a>
+            <a href="#"
+                class="block px-6 py-4 bg-gray-800 text-white text-center font-medium hover:bg-gray-700 transition-all hover:scale-105 duration-200">تسوق
+                الكل</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative h-[70vh] min-h-[400px] bg-cover bg-center"
+            style="background-image: url('https://source.unsplash.com/1600x800/?hijab,fashion,woman')">
+            <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+            <div
+                class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">حجابات حياء</h1>
+                <p class="text-lg md:text-2xl mb-8 drop-shadow-md">أناقة وحشمة</p>
+                <a href="#products"
+                    class="bg-white text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-all hover:scale-105 duration-200">
+                    اكتشفي المجموعة
+                </a>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">منتجات مميزة</h2>
+
+                <!-- Filter Options -->
+                <div class="flex flex-col md:flex-row justify-center gap-4 mb-10">
+                    <div>
+                        <label for="model-filter" class="block text-sm font-medium text-gray-700 mb-1">فلترة حسب
+                            الموديل</label>
+                        <select id="model-filter"
+                            class="w-full md:w-auto rounded-lg border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500">
+                            <option value="all">كل الموديلات</option>
+                            <option value="model-a">موديل أ</option>
+                            <option value="model-b">موديل ب</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="design-filter" class="block text-sm font-medium text-gray-700 mb-1">فلترة حسب
+                            التصميم</label>
+                        <select id="design-filter"
+                            class="w-full md:w-auto rounded-lg border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500">
+                            <option value="all">كل التصاميم</option>
+                            <option value="plain">سادة</option>
+                            <option value="floral">مُزهّر</option>
+                            <option value="geometric">هندسي</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Product Card 1 -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03]"
+                        data-model="model-a" data-design="plain">
+                        <img src="https://source.unsplash.com/600x600/?hijab,plain,beige" alt="حجاب سادة"
+                            class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب كريب حرير</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - سادة</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$25.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03]"
+                        data-model="model-b" data-design="floral">
+                        <img src="https://source.unsplash.com/600x600/?hijab,floral,woman" alt="حجاب مُزهّر"
+                            class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">سكارف قطن مُزهّر</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - مُزهّر</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$22.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03]"
+                        data-model="model-a" data-design="geometric">
+                        <img src="https://source.unsplash.com/600x600/?hijab,geometric,pattern" alt="حجاب هندسي"
+                            class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب بنقوش هندسية</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - هندسي</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$28.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03]"
+                        data-model="model-b" data-design="plain">
+                        <img src="https://source.unsplash.com/600x600/?hijab,plain,white" alt="حجاب سادة"
+                            class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب شيفون</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - سادة</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$20.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03]"
+                        data-model="model-a" data-design="floral">
+                        <img src="https://source.unsplash.com/600x600/?hijab,floral,pink" alt="حجاب مُزهّر"
+                            class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">شال مُزهّر كلاسيك</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - مُزهّر</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$26.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03]"
+                        data-model="model-b" data-design="geometric">
+                        <img src="https://source.unsplash.com/600x600/?hijab,geometric,blue" alt="حجاب هندسي"
+                            class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">سكارف بخطوط عصرية</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - هندسي</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$28.00</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="bg-gray-100 py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-2xl text-center">
+                <h2 class="text-3xl font-bold mb-8">تواصل معنا</h2>
+                <p class="text-lg text-gray-600 mb-10">
+                    عندك أسئلة أو عايزة تطلبي أوردر مخصوص؟ كلمينا!
+                </p>
+                <form action="#" method="POST" class="space-y-6 text-right">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">الاسم</label>
+                        <input type="text" id="name" name="name" required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 p-3">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 p-3">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">الرسالة</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 p-3"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="bg-gray-800 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-700 transition-all hover:scale-105 duration-200">
+                            إرسال الرسالة
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <!-- Social Media Icons (simple SVGs) -->
+                <a href="#" class="text-gray-400 hover:text-white">
+                    <span class="sr-only">انستجرام</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm2.87 11.53a.75.75 0 01-1.06 1.06L12 12.81l-1.81 1.81a.75.75 0 11-1.06-1.06L10.94 11.75l-1.81-1.81a.75.75 0 111.06-1.06L12 10.69l1.81-1.81a.75.75 0 011.06 1.06L13.06 11.75l1.81 1.81z"
+                            clip-rule="evenodd" />
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM8.28 16.5a.75.75 0 01-.75-.75V8.25a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75zm3.72-5.03a.75.75 0 00-1.06 1.06L12 13.81l1.06-1.06a.75.75 0 00-1.06-1.06zM15.75 8.25a.75.75 0 00-1.5 0v7.5a.75.75 0 001.5 0V8.25z" />
+                        <!-- A more fitting Instagram icon path -->
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.905.248 2.58.517.76.3 1.284.74 1.84 1.304.56.56.99 1.08 1.3 1.84.27.67.46 1.41.518 2.58.058 1.26.07 1.64.07 4.85s-.012 3.58-.07 4.85c-.053 1.17-.248 1.905-.518 2.58-.3 1.284-.74 1.84-1.3 1.84s-1.08.99-1.84 1.3c-.67.27-1.41.46-2.58.518-1.26.058-1.64.07-4.85.07s-3.58-.012-4.85-.07c-1.17-.053-1.905-.248-2.58-.518-.76-.3-1.284-.74-1.84-1.3-.56-.56-.99-1.08-1.3-1.84-.27-.67-.46-1.41-.518-2.58-.058-1.26-.07-1.64-.07-4.85s.012-3.58.07-4.85c.053-1.17.248-1.905.518 2.58.3-.76.74-1.284 1.3-1.84.56-.56 1.08-.99 1.84-1.3.67-.27 1.41-.46 2.58-.518 1.26-.058 1.64-.07 4.85-.07zM12 4c-3.1 0-3.46.01-4.66.06-1.1.05-1.72.23-2.22.42-.58.23-.97.52-1.38.93s-.7 1.38-.93 1.38c-.19.5-.37 1.12-.42 2.22-.05 1.2-.06 1.56-.06 4.66s.01 3.46.06 4.66c.05 1.1.23 1.72.42 2.22.23.58.52.97.93 1.38.4.4.8.7 1.38.93.5.19 1.12.37 2.22.42 1.2.05 1.56.06 4.66.06s3.46-.01 4.66-.06c1.1-.05 1.72-.23 2.22-.42.58-.23.97-.52 1.38-.93.4-.4.7-.8.93-1.38.19-.5.37-1.12.42 2.22.05-1.2.06-1.56.06-4.66s-.01-3.46-.06-4.66c-.05-1.1-.23-1.72-.42-2.22-.23-.58-.52-.97-.93-1.38-.4-.4-.8-.7-1.38-.93-.5-.19-1.12-.37-2.22-.42C15.46 4.01 15.1 4 12 4zm0 2.9c-2.8 0-5.1 2.3-5.1 5.1s2.3 5.1 5.1 5.1 5.1-2.3 5.1-5.1-2.3-5.1-5.1-5.1zm0 8.4c-1.8 0-3.3-1.5-3.3-3.3s1.5-3.3 3.3-3.3 3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3zm6.2-7.5c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1 1.1-.5 1.1-1.1-.5-1.1-1.1-1.1z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white">
+                    <span class="sr-only">فيسبوك</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white">
+                    <span class="sr-only">بينترست</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.088-.79-.168-1.656.004-2.428.19-7.94 2.21-1.11 2.21-1.11s-.51-.922-.51-2.28c0-2.148 1.245-3.748 2.78-3.748 1.302 0 1.935.976 1.935 2.15 0 1.31-.835 3.265-1.275 5.06-.35 1.48.73 2.68 2.18 2.68 2.61 0 4.57-3.45 4.57-7.46 0-3.92-2.79-6.69-6.3-6.69-4.32 0-6.86 3.19-6.86 6.2 0 1.25.47 2.59.99 3.28.11.15.13.29.09.43-.05.18-.17.68-.21.82-.05.17-.18.21-.34.13-1.3-.58-2.13-2.05-2.13-3.65 0-2.88 2.08-5.59 5.8-5.59 3.1 0 5.25 2.2 5.25 5.14 0 3.08-1.7 5.4-4.1 5.4-1.2 0-2.3-.9-1.98-2.07.39-1.27 1.1-2.6 1.1-3.5 0-.8-.4-1.48-1.1-1.48-.9 0-1.7.9-1.7 2.02 0 .7.25 1.15.25 1.15l-1.05 4.58c-.3 1.28-1.8 2.8-3.3 3.4-.5.2-1 .3-1.5.3-2.1 0-3.9-1.5-3.9-3.9 0-.8.15-1.5.4-2.1.08-.2.15-.4.2-.6 0 0 .6-2.5.7-2.9.1-.4 0-.8-.3-1.1-.3-.3-.6-.5-1-.5-1.3 0-2.2.9-2.2 2.1 0 .7.3 1.2.6 1.6l-1 4.2c-.2.8-1 3.2-1 4.2 0 3.4 2.4 6.3 5.9 6.3 1.9 0 3.6-.9 4.8-2 1.3 1.1 2.9 1.8 4.7 1.8 5.5 0 10-4.5 10-10S17.5 2 12 2z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; ٢٠٢٥ حجابات حياء. جميع الحقوق محفوظة.</p>
+            <p class="text-gray-400 text-sm mt-1">صُنع بـ ♡ للأناقة</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Product Filter Logic
+        const modelFilter = document.getElementById('model-filter');
+        const designFilter = document.getElementById('design-filter');
+        const productGrid = document.getElementById('product-grid');
+        const productCards = productGrid.querySelectorAll('.product-card');
+
+        function filterProducts() {
+            const selectedModel = modelFilter.value;
+            const selectedDesign = designFilter.value;
+
+            productCards.forEach(card => {
+                const cardModel = card.getAttribute('data-model');
+                const cardDesign = card.getAttribute('data-design');
+
+                const modelMatch = (selectedModel === 'all') || (selectedModel === cardModel);
+                const designMatch = (selectedDesign === 'all') || (selectedDesign === cardDesign);
+
+                if (modelMatch && designMatch) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    // Use setTimeout to hide after transition
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300); // Match transition duration
+                }
+            });
+
+            // Re-apply display block for those that should be visible but were hidden
+            // This is a simple fix for rapid filter changes
+            setTimeout(() => {
+                productCards.forEach(card => {
+                    const cardModel = card.getAttribute('data-model');
+                    const cardDesign = card.getAttribute('data-design');
+                    const modelMatch = (selectedModel === 'all') || (selectedModel === cardModel);
+                    const designMatch = (selectedDesign === 'all') || (selectedDesign === cardDesign);
+
+                    if (modelMatch && designMatch) {
+                        card.style.display = 'block';
+                    }
+                });
+            }, 310);
+        }
+
+        // Add event listeners to filters
+        modelFilter.addEventListener('change', filterProducts);
+        designFilter.addEventListener('change', filterProducts);
+    </script>
+
+</body>
+
+</html>
