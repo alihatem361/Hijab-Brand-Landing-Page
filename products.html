@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع المنتجات - حجابات حياء</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter & Cairo Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Use Cairo font for Arabic, fallback to Inter */
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        /* Simple transition for product cards */
+        .product-card {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* Custom range slider styling */
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #1f2937;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #1f2937;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-gray-100">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Brand Name -->
+            <a href="index.html"
+                class="text-2xl md:text-3xl font-bold text-gray-900 hover:text-gray-700 transition-colors duration-200">
+                <span class="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">حجابات
+                    حياء</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    الرئيسية
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a href="products.html"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    المنتجات
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a href="#contact"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    تواصل معنا
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+
+                <!-- Favorites Icon -->
+                <a href="favorites.html"
+                    class="relative text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <!-- Shopping Cart -->
+                <a href="cart.html"
+                    class="relative text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <a href="products.html"
+                    class="bg-gradient-to-r from-gray-800 to-gray-700 text-white px-6 py-2.5 rounded-lg font-medium hover:from-gray-700 hover:to-gray-600 transition-all hover:scale-105 hover:shadow-lg duration-200">تسوق
+                    الكل</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button"
+                class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                aria-label="فتح القائمة">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white shadow-lg border-t border-gray-100 overflow-hidden transition-all duration-300">
+            <div class="py-2">
+                <a href="index.html"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">الرئيسية</a>
+                <a href="products.html"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">المنتجات</a>
+                <a href="#contact"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">تواصل
+                    معنا</a>
+
+                <!-- Favorites in Mobile -->
+                <a href="favorites.html"
+                    class="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <span>المفضلة</span>
+                    <span
+                        class="bg-gray-900 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <!-- Shopping Cart in Mobile -->
+                <a href="cart.html"
+                    class="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <span>سلة التسوق</span>
+                    <span
+                        class="bg-gray-900 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <div class="px-6 py-4">
+                    <a href="products.html"
+                        class="block text-center bg-gradient-to-r from-gray-800 to-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:from-gray-700 hover:to-gray-600 transition-all duration-200 shadow-md">
+                        تسوق الكل
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <!-- Sidebar Filters -->
+            <aside class="lg:w-64 flex-shrink-0">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold">الفلاتر</h2>
+                        <button id="clear-filters" class="text-sm text-gray-600 hover:text-gray-900">مسح الكل</button>
+                    </div>
+
+                    <!-- Mobile Filter Toggle -->
+                    <button id="mobile-filter-toggle"
+                        class="lg:hidden w-full mb-4 bg-gray-800 text-white px-4 py-2 rounded-lg">
+                        إظهار/إخفاء الفلاتر
+                    </button>
+
+                    <div id="filter-content" class="hidden lg:block space-y-6">
+                        <!-- Model Filter -->
+                        <div class="border-b pb-6">
+                            <h3 class="font-semibold mb-3 text-gray-900">الموديل</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                    <input type="checkbox" name="model" value="model-a"
+                                        class="ml-2 w-4 h-4 text-gray-800 rounded">
+                                    <span class="text-gray-700">موديل أ</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                    <input type="checkbox" name="model" value="model-b"
+                                        class="ml-2 w-4 h-4 text-gray-800 rounded">
+                                    <span class="text-gray-700">موديل ب</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Design Filter -->
+                        <div class="border-b pb-6">
+                            <h3 class="font-semibold mb-3 text-gray-900">التصميم</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                    <input type="checkbox" name="design" value="plain"
+                                        class="ml-2 w-4 h-4 text-gray-800 rounded">
+                                    <span class="text-gray-700">سادة</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                    <input type="checkbox" name="design" value="floral"
+                                        class="ml-2 w-4 h-4 text-gray-800 rounded">
+                                    <span class="text-gray-700">مُزهّر</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                    <input type="checkbox" name="design" value="geometric"
+                                        class="ml-2 w-4 h-4 text-gray-800 rounded">
+                                    <span class="text-gray-700">هندسي</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range Filter -->
+                        <div class="border-b pb-6">
+                            <h3 class="font-semibold mb-3 text-gray-900">نطاق السعر</h3>
+                            <div class="space-y-3">
+                                <input type="range" id="price-range" min="0" max="50" value="50"
+                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                                <div class="flex justify-between text-sm text-gray-600">
+                                    <span>$0</span>
+                                    <span id="price-value" class="font-semibold text-gray-900">$50</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Color Filter -->
+                        <div class="pb-6">
+                            <h3 class="font-semibold mb-3 text-gray-900">اللون</h3>
+                            <div class="grid grid-cols-5 gap-2">
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="color" value="black" class="hidden peer">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-black border-2 border-gray-300 peer-checked:border-gray-900 peer-checked:ring-2 peer-checked:ring-gray-900">
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="color" value="white" class="hidden peer">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 peer-checked:border-gray-900 peer-checked:ring-2 peer-checked:ring-gray-900">
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="color" value="beige" class="hidden peer">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-amber-100 border-2 border-gray-300 peer-checked:border-gray-900 peer-checked:ring-2 peer-checked:ring-gray-900">
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="color" value="pink" class="hidden peer">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-pink-300 border-2 border-gray-300 peer-checked:border-gray-900 peer-checked:ring-2 peer-checked:ring-gray-900">
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="color" value="blue" class="hidden peer">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-blue-400 border-2 border-gray-300 peer-checked:border-gray-900 peer-checked:ring-2 peer-checked:ring-gray-900">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <div class="flex-1">
+                <!-- Sorting and Results Count -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                    <p class="text-gray-600">
+                        <span id="results-count">12</span> منتج
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <label for="sort" class="text-sm text-gray-700">ترتيب حسب:</label>
+                        <select id="sort"
+                            class="rounded-lg border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 text-sm">
+                            <option value="featured">مميز</option>
+                            <option value="price-low">السعر: من الأقل للأعلى</option>
+                            <option value="price-high">السعر: من الأعلى للأقل</option>
+                            <option value="name">الاسم</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Product Card 1 -->
+                    <a href="product-detail.html?id=1"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-a" data-design="plain" data-price="25" data-color="black">
+                        <div class="relative">
+                            <img src="images/imgi_107_IMG_3215-2.jpg" alt="حجاب سادة" class="w-full h-64 object-cover">
+                            <span
+                                class="absolute top-3 left-3 bg-gray-900 text-white px-3 py-1 rounded-full text-xs font-semibold">جديد</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب كريب حرير</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - سادة</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$25.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 2 -->
+                    <a href="product-detail.html?id=2"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-b" data-design="floral" data-price="22" data-color="pink">
+                        <div class="relative">
+                            <img src="images/imgi_7_collection-tunique-musulmane-1080x1349_1800x.webp" alt="حجاب مُزهّر"
+                                class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">سكارف قطن مُزهّر</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - مُزهّر</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$22.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 3 -->
+                    <a href="product-detail.html?id=3"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-a" data-design="geometric" data-price="28" data-color="beige">
+                        <div class="relative">
+                            <img src="images/imgi_6_33977-robe-femme-musulmane-turque-moderne-mastour-hijab-1.jpg"
+                                alt="حجاب هندسي" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب بنقوش هندسية</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - هندسي</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$28.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 4 -->
+                    <a href="product-detail.html?id=4"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-b" data-design="plain" data-price="20" data-color="white">
+                        <div class="relative">
+                            <img src="images/imgi_78_f18.jpg" alt="حجاب سادة" class="w-full h-64 object-cover">
+                            <span
+                                class="absolute top-3 left-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">خصم</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب شيفون</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - سادة</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$20.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 5 -->
+                    <a href="product-detail.html?id=5"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-a" data-design="floral" data-price="26" data-color="pink">
+                        <div class="relative">
+                            <img src="images/imgi_13_f30.jpg" alt="حجاب مُزهّر" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">شال مُزهّر كلاسيك</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - مُزهّر</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$26.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 6 -->
+                    <a href="product-detail.html?id=6"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-b" data-design="geometric" data-price="28" data-color="beige">
+                        <div class="relative">
+                            <img src="images/imgi_108_robe-casual-zip-creme.jpg" alt="حجاب هندسي"
+                                class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">سكارف بخطوط عصرية</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - هندسي</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$28.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 7 -->
+                    <a href="product-detail.html?id=7"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-a" data-design="plain" data-price="24" data-color="blue">
+                        <div class="relative">
+                            <img src="images/imgi_107_IMG_3215-2.jpg" alt="حجاب سادة" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب جيرسيه ناعم</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - سادة</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$24.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 8 -->
+                    <a href="product-detail.html?id=8"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-b" data-design="floral" data-price="30" data-color="pink">
+                        <div class="relative">
+                            <img src="images/imgi_7_collection-tunique-musulmane-1080x1349_1800x.webp" alt="حجاب مُزهّر"
+                                class="w-full h-64 object-cover">
+                            <span
+                                class="absolute top-3 left-3 bg-gray-900 text-white px-3 py-1 rounded-full text-xs font-semibold">جديد</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">شال حرير مطرز</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - مُزهّر</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$30.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 9 -->
+                    <a href="product-detail.html?id=9"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-a" data-design="geometric" data-price="27" data-color="black">
+                        <div class="relative">
+                            <img src="images/imgi_6_33977-robe-femme-musulmane-turque-moderne-mastour-hijab-1.jpg"
+                                alt="حجاب هندسي" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب بورسلين</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - هندسي</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$27.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 10 -->
+                    <a href="product-detail.html?id=10"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-b" data-design="plain" data-price="21" data-color="white">
+                        <div class="relative">
+                            <img src="images/imgi_78_f18.jpg" alt="حجاب سادة" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">حجاب فيسكوز</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - سادة</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$21.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 11 -->
+                    <a href="product-detail.html?id=11"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-a" data-design="floral" data-price="29" data-color="beige">
+                        <div class="relative">
+                            <img src="images/imgi_13_f30.jpg" alt="حجاب مُزهّر" class="w-full h-64 object-cover">
+                            <span
+                                class="absolute top-3 left-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">خصم</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">طرحة ورد راقية</h3>
+                            <p class="text-gray-600 mb-4">موديل أ - مُزهّر</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$29.00</p>
+                        </div>
+                    </a>
+
+                    <!-- Product Card 12 -->
+                    <a href="product-detail.html?id=12"
+                        class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] block"
+                        data-model="model-b" data-design="geometric" data-price="32" data-color="blue">
+                        <div class="relative">
+                            <img src="images/imgi_108_robe-casual-zip-creme.jpg" alt="حجاب هندسي"
+                                class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">شال معاصر فاخر</h3>
+                            <p class="text-gray-600 mb-4">موديل ب - هندسي</p>
+                            <p class="text-lg font-bold text-gray-900 text-left dir-ltr">$32.00</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-results" class="hidden text-center py-16">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900">لا توجد نتائج</h3>
+                    <p class="mt-2 text-gray-600">جربي تغيير الفلاتر لرؤية المزيد من المنتجات</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+                <!-- Brand Section -->
+                <div>
+                    <h3
+                        class="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                        حجابات حياء</h3>
+                    <p class="text-gray-400 mb-4">أناقة وحشمة في كل قطعة نقدمها لك</p>
+                    <p class="text-gray-400 text-sm">جودة عالية، تصاميم عصرية، وأسعار مناسبة</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الرئيسية</a></li>
+                        <li><a href="products.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">المنتجات</a></li>
+                        <li><a href="products.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">تسوق الكل</a></li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">تواصل
+                                معنا</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">خدمة العملاء</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">سياسة
+                                الإرجاع</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الشحن
+                                والتوصيل</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الأسئلة
+                                الشائعة</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">طرق
+                                الدفع</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">اشتركي في نشرتنا</h4>
+                    <p class="text-gray-400 text-sm mb-4">احصلي على آخر العروض والمنتجات الجديدة</p>
+                    <form class="flex flex-col gap-2">
+                        <input type="email" placeholder="بريدك الإلكتروني"
+                            class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-gray-500 transition-colors duration-200">
+                        <button type="submit"
+                            class="px-4 py-2 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+                            اشتراك
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-gray-800 my-8"></div>
+
+        <!-- Bottom Footer -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+            <!-- Copyright -->
+            <div class="text-center">
+                <p class="text-gray-400 text-sm">&copy; ٢٠٢٥ حجابات حياء. جميع الحقوق محفوظة.</p>
+                <!-- تم تطوير وتصميم الموقع بواسطة علي حاتم رمضان -->
+                <p class="mt-4 text-xs text-gray-500">تم تطوير وتصميم الموقع بواسطة
+
+                    <a href="https://ali-hatem-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:underline">علي حاتم رمضان</a>
+
+                </p>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mobile Filter Toggle
+        const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
+        const filterContent = document.getElementById('filter-content');
+
+        mobileFilterToggle.addEventListener('click', () => {
+            filterContent.classList.toggle('hidden');
+        });
+
+        // Price Range Update
+        const priceRange = document.getElementById('price-range');
+        const priceValue = document.getElementById('price-value');
+
+        priceRange.addEventListener('input', (e) => {
+            priceValue.textContent = `$${e.target.value}`;
+            filterProducts();
+        });
+
+        // Product Filtering Logic
+        const productGrid = document.getElementById('product-grid');
+        const productCards = productGrid.querySelectorAll('.product-card');
+        const resultsCount = document.getElementById('results-count');
+        const noResults = document.getElementById('no-results');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+
+        function filterProducts() {
+            // Get selected filters
+            const selectedModels = Array.from(document.querySelectorAll('input[name="model"]:checked')).map(cb => cb.value);
+            const selectedDesigns = Array.from(document.querySelectorAll('input[name="design"]:checked')).map(cb => cb.value);
+            const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(cb => cb.value);
+            const maxPrice = parseInt(priceRange.value);
+
+            let visibleCount = 0;
+
+            productCards.forEach(card => {
+                const cardModel = card.getAttribute('data-model');
+                const cardDesign = card.getAttribute('data-design');
+                const cardColor = card.getAttribute('data-color');
+                const cardPrice = parseInt(card.getAttribute('data-price'));
+
+                // Check if card matches all filters
+                const modelMatch = selectedModels.length === 0 || selectedModels.includes(cardModel);
+                const designMatch = selectedDesigns.length === 0 || selectedDesigns.includes(cardDesign);
+                const colorMatch = selectedColors.length === 0 || selectedColors.includes(cardColor);
+                const priceMatch = cardPrice <= maxPrice;
+
+                if (modelMatch && designMatch && colorMatch && priceMatch) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            // Update results count
+            resultsCount.textContent = visibleCount;
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        // Add event listeners to all filter inputs
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', filterProducts);
+        });
+
+        // Clear all filters
+        clearFiltersBtn.addEventListener('click', () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            priceRange.value = 50;
+            priceValue.textContent = '$50';
+            filterProducts();
+        });
+
+        // Sorting functionality
+        const sortSelect = document.getElementById('sort');
+
+        sortSelect.addEventListener('change', (e) => {
+            const sortType = e.target.value;
+            const cardsArray = Array.from(productCards);
+
+            cardsArray.sort((a, b) => {
+                const priceA = parseInt(a.getAttribute('data-price'));
+                const priceB = parseInt(b.getAttribute('data-price'));
+                const nameA = a.querySelector('h3').textContent;
+                const nameB = b.querySelector('h3').textContent;
+
+                switch (sortType) {
+                    case 'price-low':
+                        return priceA - priceB;
+                    case 'price-high':
+                        return priceB - priceA;
+                    case 'name':
+                        return nameA.localeCompare(nameB, 'ar');
+                    default: // featured
+                        return 0;
+                }
+            });
+
+            // Re-append sorted cards
+            cardsArray.forEach(card => productGrid.appendChild(card));
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المفضلة - حجابات حياء</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter & Cairo Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-gray-100">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Brand Name -->
+            <a href="index.html"
+                class="text-2xl md:text-3xl font-bold text-gray-900 hover:text-gray-700 transition-colors duration-200">
+                <span class="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">حجابات
+                    حياء</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    الرئيسية
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a href="products.html"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    المنتجات
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a href="#contact"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    تواصل معنا
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+
+                <!-- Favorites Icon -->
+                <a href="favorites.html"
+                    class="relative text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <!-- Shopping Cart -->
+                <a href="cart.html"
+                    class="relative text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <a href="products.html"
+                    class="bg-gradient-to-r from-gray-800 to-gray-700 text-white px-6 py-2.5 rounded-lg font-medium hover:from-gray-700 hover:to-gray-600 transition-all hover:scale-105 hover:shadow-lg duration-200">تسوق
+                    الكل</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button"
+                class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                aria-label="فتح القائمة">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white shadow-lg border-t border-gray-100 overflow-hidden transition-all duration-300">
+            <div class="py-2">
+                <a href="./index.html"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">الرئيسية</a>
+                <a href="./products.html"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">المنتجات</a>
+                <a href="#contact"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">تواصل
+                    معنا</a>
+
+                <!-- Favorites in Mobile -->
+                <a href="./favorites.html"
+                    class="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <span>المفضلة</span>
+                    <span
+                        class="bg-gray-900 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <!-- Shopping Cart in Mobile -->
+                <a href="cart.html"
+                    class="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <span>سلة التسوق</span>
+                    <span
+                        class="bg-gray-900 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <div class="px-6 py-4">
+                    <a href="products.html"
+                        class="block text-center bg-gradient-to-r from-gray-800 to-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:from-gray-700 hover:to-gray-600 transition-all duration-200 shadow-md">
+                        تسوق الكل
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-12 min-h-screen">
+        <div class="container mx-auto px-6">
+            <!-- Page Title -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold mb-2">المفضلة</h1>
+                <p class="text-gray-600">لديك 4 منتجات في المفضلة</p>
+            </div>
+
+            <!-- Favorites Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                <!-- Favorite Item 1 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 relative group">
+                    <!-- Remove from Favorites Button -->
+                    <button
+                        class="absolute top-3 left-3 z-10 bg-white/90 text-red-500 p-2 rounded-full hover:bg-white transition-all hover:scale-110"
+                        title="إزالة من المفضلة">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <a href="product-detail.html?id=1" class="block">
+                        <img src="images/imgi_107_IMG_3215-2.jpg" alt="حجاب سادة" class="w-full h-64 object-cover">
+                    </a>
+
+                    <div class="p-6">
+                        <a href="product-detail.html?id=1">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-gray-600">حجاب كريب حرير</h3>
+                        </a>
+                        <p class="text-gray-600 mb-4">موديل أ - سادة</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-lg font-bold text-gray-900">$25.00</p>
+                            <button
+                                class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-all hover:scale-105 text-sm font-medium">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Item 2 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 relative group">
+                    <!-- Remove from Favorites Button -->
+                    <button
+                        class="absolute top-3 left-3 z-10 bg-white/90 text-red-500 p-2 rounded-full hover:bg-white transition-all hover:scale-110"
+                        title="إزالة من المفضلة">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <a href="product-detail.html?id=2" class="block">
+                        <img src="images/imgi_7_collection-tunique-musulmane-1080x1349_1800x.webp" alt="حجاب مُزهّر"
+                            class="w-full h-64 object-cover">
+                    </a>
+
+                    <div class="p-6">
+                        <a href="product-detail.html?id=2">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-gray-600">سكارف قطن مُزهّر</h3>
+                        </a>
+                        <p class="text-gray-600 mb-4">موديل ب - مُزهّر</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-lg font-bold text-gray-900">$22.00</p>
+                            <button
+                                class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-all hover:scale-105 text-sm font-medium">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Item 3 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 relative group">
+                    <!-- Remove from Favorites Button -->
+                    <button
+                        class="absolute top-3 left-3 z-10 bg-white/90 text-red-500 p-2 rounded-full hover:bg-white transition-all hover:scale-110"
+                        title="إزالة من المفضلة">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <a href="product-detail.html?id=3" class="block">
+                        <img src="images/imgi_6_33977-robe-femme-musulmane-turque-moderne-mastour-hijab-1.jpg"
+                            alt="حجاب هندسي" class="w-full h-64 object-cover">
+                    </a>
+
+                    <div class="p-6">
+                        <a href="product-detail.html?id=3">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-gray-600">حجاب بنقوش هندسية</h3>
+                        </a>
+                        <p class="text-gray-600 mb-4">موديل أ - هندسي</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-lg font-bold text-gray-900">$28.00</p>
+                            <button
+                                class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-all hover:scale-105 text-sm font-medium">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Item 4 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 relative group">
+                    <!-- Remove from Favorites Button -->
+                    <button
+                        class="absolute top-3 left-3 z-10 bg-white/90 text-red-500 p-2 rounded-full hover:bg-white transition-all hover:scale-110"
+                        title="إزالة من المفضلة">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <a href="product-detail.html?id=5" class="block">
+                        <img src="images/imgi_13_f30.jpg" alt="حجاب مُزهّر" class="w-full h-64 object-cover">
+                    </a>
+
+                    <div class="p-6">
+                        <a href="product-detail.html?id=5">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-gray-600">شال مُزهّر كلاسيك</h3>
+                        </a>
+                        <p class="text-gray-600 mb-4">موديل أ - مُزهّر</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-lg font-bold text-gray-900">$26.00</p>
+                            <button
+                                class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-all hover:scale-105 text-sm font-medium">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-12 text-center bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-2xl font-bold mb-4">هل تريدين المزيد؟</h2>
+                <p class="text-gray-600 mb-6">اكتشفي مجموعتنا الكاملة من الحجابات العصرية</p>
+                <a href="products.html"
+                    class="inline-block bg-gradient-to-r from-gray-800 to-gray-700 text-white px-8 py-3 rounded-lg font-bold hover:from-gray-700 hover:to-gray-600 transition-all hover:shadow-lg">
+                    تصفح جميع المنتجات
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+                <!-- Brand Section -->
+                <div>
+                    <h3
+                        class="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                        حجابات حياء</h3>
+                    <p class="text-gray-400 mb-4">أناقة وحشمة في كل قطعة نقدمها لك</p>
+                    <p class="text-gray-400 text-sm">جودة عالية، تصاميم عصرية، وأسعار مناسبة</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الرئيسية</a></li>
+                        <li><a href="products.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">المنتجات</a></li>
+                        <li><a href="products.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">تسوق الكل</a></li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">تواصل
+                                معنا</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">خدمة العملاء</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">سياسة
+                                الإرجاع</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الشحن
+                                والتوصيل</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الأسئلة
+                                الشائعة</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">طرق
+                                الدفع</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">اشتركي في نشرتنا</h4>
+                    <p class="text-gray-400 text-sm mb-4">احصلي على آخر العروض والمنتجات الجديدة</p>
+                    <form class="flex flex-col gap-2">
+                        <input type="email" placeholder="بريدك الإلكتروني"
+                            class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-gray-500 transition-colors duration-200">
+                        <button type="submit"
+                            class="px-4 py-2 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+                            اشتراك
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-gray-800 my-8"></div>
+
+        <!-- Bottom Footer -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+            <!-- Copyright -->
+            <div class="text-center">
+                <p class="text-gray-400 text-sm">&copy; ٢٠٢٥ حجابات حياء. جميع الحقوق محفوظة.</p>
+                <!-- تم تطوير وتصميم الموقع بواسطة علي حاتم رمضان -->
+                <p class="mt-4 text-xs text-gray-500">تم تطوير وتصميم الموقع بواسطة
+
+                    <a href="https://ali-hatem-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:underline">علي حاتم رمضان</a>
+
+                </p>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>

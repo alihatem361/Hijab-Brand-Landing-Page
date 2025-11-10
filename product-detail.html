@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج - حجابات حياء</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter & Cairo Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Use Cairo font for Arabic, fallback to Inter */
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        /* Gallery thumbnail styling */
+        .gallery-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .gallery-thumb.active {
+            border-color: #1f2937;
+        }
+
+        .gallery-thumb:hover {
+            opacity: 0.7;
+        }
+
+        /* Zoom effect on main image */
+        .main-image {
+            transition: transform 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Color swatch styling */
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .color-swatch.active {
+            border-color: #1f2937;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #1f2937;
+        }
+
+        /* Quantity input styling */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-gray-100">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Brand Name -->
+            <a href="index.html"
+                class="text-2xl md:text-3xl font-bold text-gray-900 hover:text-gray-700 transition-colors duration-200">
+                <span class="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">حجابات
+                    حياء</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    الرئيسية
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a href="products.html"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    المنتجات
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a href="#contact"
+                    class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group">
+                    تواصل معنا
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></span>
+                </a>
+
+                <!-- Favorites Icon -->
+                <a href="favorites.html"
+                    class="relative text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <!-- Shopping Cart -->
+                <a href="cart.html"
+                    class="relative text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gray-900 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <a href="products.html"
+                    class="bg-gradient-to-r from-gray-800 to-gray-700 text-white px-6 py-2.5 rounded-lg font-medium hover:from-gray-700 hover:to-gray-600 transition-all hover:scale-105 hover:shadow-lg duration-200">تسوق
+                    الكل</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button"
+                class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                aria-label="فتح القائمة">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white shadow-lg border-t border-gray-100 overflow-hidden transition-all duration-300">
+            <div class="py-2">
+                <a href="index.html"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">الرئيسية</a>
+                <a href="products.html"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">المنتجات</a>
+                <a href="#contact"
+                    class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">تواصل
+                    معنا</a>
+
+                <!-- Favorites in Mobile -->
+                <a href="favorites.html"
+                    class="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <span>المفضلة</span>
+                    <span
+                        class="bg-gray-900 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <!-- Shopping Cart in Mobile -->
+                <a href="cart.html"
+                    class="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <span>سلة التسوق</span>
+                    <span
+                        class="bg-gray-900 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">0</span>
+                </a>
+
+                <div class="px-6 py-4">
+                    <a href="products.html"
+                        class="block text-center bg-gradient-to-r from-gray-800 to-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:from-gray-700 hover:to-gray-600 transition-all duration-200 shadow-md">
+                        تسوق الكل
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <!-- Breadcrumb -->
+        <nav class="text-sm mb-8">
+            <ol class="flex items-center gap-2 text-gray-600">
+                <li><a href="index.html" class="hover:text-gray-900">الرئيسية</a></li>
+                <li>&lt;</li>
+                <li><a href="products.html" class="hover:text-gray-900">المنتجات</a></li>
+                <li>&lt;</li>
+                <li class="text-gray-900 font-semibold" id="breadcrumb-product">حجاب كريب حرير</li>
+            </ol>
+        </nav>
+
+        <!-- Product Details Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+
+            <!-- Image Gallery -->
+            <div class="space-y-4">
+                <!-- Main Image -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img id="main-image" src="images/imgi_107_IMG_3215-2.jpg" alt="حجاب كريب حرير"
+                        class="w-full h-auto object-cover main-image">
+                </div>
+
+                <!-- Thumbnail Gallery -->
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="gallery-thumb active bg-white rounded-lg shadow-sm overflow-hidden"
+                        data-image="images/imgi_107_IMG_3215-2.jpg">
+                        <img src="images/imgi_107_IMG_3215-2.jpg" alt="عرض 1" class="w-full h-24 object-cover">
+                    </div>
+                    <div class="gallery-thumb bg-white rounded-lg shadow-sm overflow-hidden"
+                        data-image="images/imgi_78_f18.jpg">
+                        <img src="images/imgi_78_f18.jpg" alt="عرض 2" class="w-full h-24 object-cover">
+                    </div>
+                    <div class="gallery-thumb bg-white rounded-lg shadow-sm overflow-hidden"
+                        data-image="images/imgi_13_f30.jpg">
+                        <img src="images/imgi_13_f30.jpg" alt="عرض 3" class="w-full h-24 object-cover">
+                    </div>
+                    <div class="gallery-thumb bg-white rounded-lg shadow-sm overflow-hidden"
+                        data-image="images/imgi_7_collection-tunique-musulmane-1080x1349_1800x.webp">
+                        <img src="images/imgi_7_collection-tunique-musulmane-1080x1349_1800x.webp" alt="عرض 4"
+                            class="w-full h-24 object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="space-y-6">
+                <!-- Product Title and Badge -->
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h1 id="product-title" class="text-3xl font-bold text-gray-900">حجاب كريب حرير</h1>
+                        <span class="bg-gray-900 text-white px-3 py-1 rounded-full text-xs font-semibold">جديد</span>
+                    </div>
+                    <p class="text-gray-600" id="product-category">موديل أ - سادة</p>
+                </div>
+
+                <!-- Rating -->
+                <div class="flex items-center gap-2">
+                    <div class="flex text-yellow-400">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                    </div>
+                    <span class="text-gray-600 text-sm">(٤٨ تقييم)</span>
+                </div>
+
+                <!-- Price -->
+                <div class="flex items-baseline gap-3">
+                    <p id="product-price" class="text-3xl font-bold text-gray-900 dir-ltr text-left">$25.00</p>
+                    <p class="text-xl text-gray-500 line-through dir-ltr text-left">$35.00</p>
+                    <span class="bg-red-100 text-red-700 px-2 py-1 rounded text-sm font-semibold">خصم ٢٨٪</span>
+                </div>
+
+                <!-- Description -->
+                <div class="border-t pt-6">
+                    <h3 class="font-semibold mb-2 text-gray-900">الوصف</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        حجاب فاخر من الكريب الحرير الناعم، مثالي للاستخدام اليومي والمناسبات الخاصة.
+                        القماش خفيف الوزن وسهل التشكيل، يوفر تغطية مريحة طوال اليوم.
+                        التصميم الأنيق والجودة العالية تجعله إضافة مثالية لخزانة ملابسك.
+                    </p>
+                </div>
+
+                <!-- Color Selection -->
+                <div>
+                    <h3 class="font-semibold mb-3 text-gray-900">اللون</h3>
+                    <div class="flex gap-3">
+                        <div class="color-swatch active bg-black" data-color="أسود" title="أسود"></div>
+                        <div class="color-swatch bg-white border-2 border-gray-300" data-color="أبيض" title="أبيض">
+                        </div>
+                        <div class="color-swatch bg-amber-100" data-color="بيج" title="بيج"></div>
+                        <div class="color-swatch bg-pink-300" data-color="وردي" title="وردي"></div>
+                        <div class="color-swatch bg-blue-400" data-color="أزرق" title="أزرق"></div>
+                        <div class="color-swatch bg-green-600" data-color="أخضر" title="أخضر"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">اللون المختار: <span id="selected-color"
+                            class="font-semibold">أسود</span></p>
+                </div>
+
+                <!-- Size Selection -->
+                <div>
+                    <h3 class="font-semibold mb-3 text-gray-900">المقاس</h3>
+                    <div class="flex gap-3">
+                        <button
+                            class="size-option px-6 py-2 border-2 border-gray-300 rounded-lg hover:border-gray-900 transition-all active"
+                            data-size="قياسي">
+                            قياسي
+                        </button>
+                        <button
+                            class="size-option px-6 py-2 border-2 border-gray-300 rounded-lg hover:border-gray-900 transition-all"
+                            data-size="كبير">
+                            كبير
+                        </button>
+                        <button
+                            class="size-option px-6 py-2 border-2 border-gray-300 rounded-lg hover:border-gray-900 transition-all"
+                            data-size="صغير">
+                            صغير
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">المقاس المختار: <span id="selected-size"
+                            class="font-semibold">قياسي</span></p>
+                </div>
+
+                <!-- Quantity Selection -->
+                <div>
+                    <h3 class="font-semibold mb-3 text-gray-900">الكمية</h3>
+                    <div class="flex items-center gap-4">
+                        <button id="decrease-qty"
+                            class="w-10 h-10 rounded-lg border-2 border-gray-300 hover:border-gray-900 flex items-center justify-center font-bold text-lg">
+                            -
+                        </button>
+                        <input type="number" id="quantity" value="1" min="1" max="10"
+                            class="w-20 h-10 text-center border-2 border-gray-300 rounded-lg font-semibold">
+                        <button id="increase-qty"
+                            class="w-10 h-10 rounded-lg border-2 border-gray-300 hover:border-gray-900 flex items-center justify-center font-bold text-lg">
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add to Cart Button -->
+                <div class="flex gap-4 pt-4">
+                    <button id="add-to-cart"
+                        class="flex-1 bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-700 transition-all hover:scale-105 duration-200 flex items-center justify-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        إضافة للسلة
+                    </button>
+                    <button class="px-4 py-4 border-2 border-gray-300 rounded-lg hover:border-gray-900 transition-all"
+                        title="أضف للمفضلة">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Product Features -->
+                <div class="border-t pt-6 space-y-3">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-700">شحن مجاني للطلبات فوق $50</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-700">إمكانية الإرجاع خلال ٣٠ يوم</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-700">منتج أصلي ١٠٠٪</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Product Tabs (Details, Reviews, Care) -->
+        <div class="bg-white rounded-lg shadow-md mb-16">
+            <div class="border-b">
+                <div class="flex">
+                    <button class="tab-button px-8 py-4 font-semibold border-b-2 border-gray-900" data-tab="details">
+                        المواصفات
+                    </button>
+                    <button
+                        class="tab-button px-8 py-4 font-semibold text-gray-600 border-b-2 border-transparent hover:text-gray-900"
+                        data-tab="reviews">
+                        التقييمات (٤٨)
+                    </button>
+                    <button
+                        class="tab-button px-8 py-4 font-semibold text-gray-600 border-b-2 border-transparent hover:text-gray-900"
+                        data-tab="care">
+                        العناية بالمنتج
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-8">
+                <!-- Details Tab -->
+                <div id="tab-details" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">المواد</h4>
+                            <p class="text-gray-600">١٠٠٪ كريب حرير</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">الأبعاد</h4>
+                            <p class="text-gray-600">١٨٠ سم × ٧٠ سم</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">الوزن</h4>
+                            <p class="text-gray-600">١٢٠ جرام</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">بلد المنشأ</h4>
+                            <p class="text-gray-600">تركيا</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="tab-reviews" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <!-- Review 1 -->
+                        <div class="border-b pb-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                </div>
+                                <span class="font-semibold">فاطمة أحمد</span>
+                                <span class="text-gray-500 text-sm">منذ أسبوع</span>
+                            </div>
+                            <p class="text-gray-700">منتج رائع! القماش ناعم جداً ولا يتجعد. اللون مطابق للصورة تماماً.
+                            </p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="border-b pb-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                </div>
+                                <span class="font-semibold">مريم سالم</span>
+                                <span class="text-gray-500 text-sm">منذ أسبوعين</span>
+                            </div>
+                            <p class="text-gray-700">جودة ممتازة وسعر مناسب. الحجم مثالي ولا ينزلق.</p>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="pb-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                </div>
+                                <span class="font-semibold">نور الدين</span>
+                                <span class="text-gray-500 text-sm">منذ شهر</span>
+                            </div>
+                            <p class="text-gray-700">اشتريت ٣ قطع والكل راض عن الجودة. التوصيل كان سريع أيضاً.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Care Tab -->
+                <div id="tab-care" class="tab-content hidden">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-gray-700 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold mb-1">الغسيل</h4>
+                                <p class="text-gray-600">اغسلي باليد بماء بارد أو دافئ</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-gray-700 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold mb-1">التجفيف</h4>
+                                <p class="text-gray-600">علقيها للتجفيف في الهواء، تجنبي المجفف</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-gray-700 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold mb-1">الكي</h4>
+                                <p class="text-gray-600">كي بدرجة حرارة منخفضة إذا لزم الأمر</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-gray-700 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold mb-1">التخزين</h4>
+                                <p class="text-gray-600">احفظيه مطوياً في مكان جاف بعيداً عن أشعة الشمس المباشرة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8">منتجات مشابهة</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Related Product 1 -->
+                <a href="product-detail.html?id=2"
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] transition-all block">
+                    <img src="images/imgi_7_collection-tunique-musulmane-1080x1349_1800x.webp" alt="سكارف قطن مُزهّر"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">سكارف قطن مُزهّر</h3>
+                        <p class="text-gray-600 text-sm mb-2">موديل ب - مُزهّر</p>
+                        <p class="font-bold text-gray-900 dir-ltr text-left">$22.00</p>
+                    </div>
+                </a>
+
+                <!-- Related Product 2 -->
+                <a href="product-detail.html?id=4"
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] transition-all block">
+                    <img src="images/imgi_78_f18.jpg" alt="حجاب شيفون" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">حجاب شيفون</h3>
+                        <p class="text-gray-600 text-sm mb-2">موديل ب - سادة</p>
+                        <p class="font-bold text-gray-900 dir-ltr text-left">$20.00</p>
+                    </div>
+                </a>
+
+                <!-- Related Product 3 -->
+                <a href="product-detail.html?id=5"
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] transition-all block">
+                    <img src="images/imgi_13_f30.jpg" alt="شال مُزهّر كلاسيك" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">شال مُزهّر كلاسيك</h3>
+                        <p class="text-gray-600 text-sm mb-2">موديل أ - مُزهّر</p>
+                        <p class="font-bold text-gray-900 dir-ltr text-left">$26.00</p>
+                    </div>
+                </a>
+
+                <!-- Related Product 4 -->
+                <a href="product-detail.html?id=6"
+                    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.03] transition-all block">
+                    <img src="images/imgi_108_robe-casual-zip-creme.jpg" alt="سكارف بخطوط عصرية"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-2">سكارف بخطوط عصرية</h3>
+                        <p class="text-gray-600 text-sm mb-2">موديل ب - هندسي</p>
+                        <p class="font-bold text-gray-900 dir-ltr text-left">$28.00</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+                <!-- Brand Section -->
+                <div>
+                    <h3
+                        class="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                        حجابات حياء</h3>
+                    <p class="text-gray-400 mb-4">أناقة وحشمة في كل قطعة نقدمها لك</p>
+                    <p class="text-gray-400 text-sm">جودة عالية، تصاميم عصرية، وأسعار مناسبة</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الرئيسية</a></li>
+                        <li><a href="products.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">المنتجات</a></li>
+                        <li><a href="products.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">تسوق الكل</a></li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">تواصل
+                                معنا</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">خدمة العملاء</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">سياسة
+                                الإرجاع</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الشحن
+                                والتوصيل</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">الأسئلة
+                                الشائعة</a></li>
+                        <li><a href="index.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200">طرق
+                                الدفع</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">اشتركي في نشرتنا</h4>
+                    <p class="text-gray-400 text-sm mb-4">احصلي على آخر العروض والمنتجات الجديدة</p>
+                    <form class="flex flex-col gap-2">
+                        <input type="email" placeholder="بريدك الإلكتروني"
+                            class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-gray-500 transition-colors duration-200">
+                        <button type="submit"
+                            class="px-4 py-2 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+                            اشتراك
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-gray-800 my-8"></div>
+
+        <!-- Bottom Footer -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+            <!-- Copyright -->
+            <div class="text-center">
+                <p class="text-gray-400 text-sm">&copy; ٢٠٢٥ حجابات حياء. جميع الحقوق محفوظة.</p>
+                <!-- تم تطوير وتصميم الموقع بواسطة علي حاتم رمضان -->
+                <p class="mt-4 text-xs text-gray-500">تم تطوير وتصميم الموقع بواسطة
+
+                    <a href="https://ali-hatem-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:underline">علي حاتم رمضان</a>
+
+                </p>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Gallery Image Switching
+        const mainImage = document.getElementById('main-image');
+        const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+
+        galleryThumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const newImage = thumb.getAttribute('data-image');
+                mainImage.src = newImage;
+
+                // Update active state
+                galleryThumbs.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+        });
+
+        // Color Selection
+        const colorSwatches = document.querySelectorAll('.color-swatch');
+        const selectedColorText = document.getElementById('selected-color');
+
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                const color = swatch.getAttribute('data-color');
+                selectedColorText.textContent = color;
+
+                // Update active state
+                colorSwatches.forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+            });
+        });
+
+        // Size Selection
+        const sizeOptions = document.querySelectorAll('.size-option');
+        const selectedSizeText = document.getElementById('selected-size');
+
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const size = option.getAttribute('data-size');
+                selectedSizeText.textContent = size;
+
+                // Update active state
+                sizeOptions.forEach(o => {
+                    o.classList.remove('active', 'border-gray-900', 'bg-gray-900', 'text-white');
+                    o.classList.add('border-gray-300');
+                });
+                option.classList.remove('border-gray-300');
+                option.classList.add('active', 'border-gray-900', 'bg-gray-900', 'text-white');
+            });
+        });
+
+        // Quantity Controls
+        const decreaseBtn = document.getElementById('decrease-qty');
+        const increaseBtn = document.getElementById('increase-qty');
+        const quantityInput = document.getElementById('quantity');
+
+        decreaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            const maxValue = parseInt(quantityInput.max);
+            if (currentValue < maxValue) {
+                quantityInput.value = currentValue + 1;
+            }
+        });
+
+        // Add to Cart
+        const addToCartBtn = document.getElementById('add-to-cart');
+
+        addToCartBtn.addEventListener('click', () => {
+            const productTitle = document.getElementById('product-title').textContent;
+            const selectedColor = selectedColorText.textContent;
+            const selectedSize = selectedSizeText.textContent;
+            const quantity = quantityInput.value;
+
+            alert(`تمت إضافة ${quantity} من "${productTitle}" (اللون: ${selectedColor}, المقاس: ${selectedSize}) إلى السلة!`);
+        });
+
+        // Tab Switching
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+
+                // Update button states
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('border-gray-900', 'text-gray-900');
+                    btn.classList.add('border-transparent', 'text-gray-600');
+                });
+                button.classList.remove('border-transparent', 'text-gray-600');
+                button.classList.add('border-gray-900', 'text-gray-900');
+
+                // Show corresponding tab content
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
